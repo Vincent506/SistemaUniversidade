@@ -39,26 +39,25 @@ public class Departamento extends Object{
         numberfuncionarios++;
     }
 
-    public void criarFuncionario(){
+    public void criarFuncionario(String nome, String codigo,double salario, int tipo, String especifico){
         
-        System.out.println("Selecione o tipo de funcionario 1 = Tecnico; 2 = Docente");
-        int option = Integer.parseInt(input.nextLine());
-        if (option == 2) {
-            FuncionarioDocente escolhido = new FuncionarioDocente(null, null, 0, null);
+        if (tipo == 2) {
+            FuncionarioDocente escolhido = new FuncionarioDocente(nome, codigo,salario , especifico);
             adicionarFuncionario(escolhido);
-        }else if (option == 1) {
-            FuncionarioTecnico escolhido2 = new FuncionarioTecnico(null, null, 0, null);
+        }else if (tipo == 1) {
+            FuncionarioTecnico escolhido2 = new FuncionarioTecnico(nome, codigo, salario, especifico);
             adicionarFuncionario(escolhido2);
         }else{
             System.out.println("Opção Invalida");
         }
     }
 
-    public void buscar(String procurado){
+    public Funcionario buscar(String procurado){
         int verificador = -1;
+        Funcionario achado = new Funcionario(null, null, 0);
         for (int i = 0; i < getNF(); i++) {
             if (procurado.equalsIgnoreCase(funcionarios[i].getNome())) {
-                funcionarios[i].mostrar();
+                achado = funcionarios[i];
                 verificador++;
             }
         }
@@ -67,7 +66,7 @@ public class Departamento extends Object{
         }else{
             System.out.println("Funcionario nao encontrado");
         }
-        
+        return achado;
     }
 
     public double calcularGastos(){

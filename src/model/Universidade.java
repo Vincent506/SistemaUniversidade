@@ -2,10 +2,10 @@ package model;
 
 
 public class Universidade{
-   private String nome;
-   private int maximo;
-   private Departamento[] departamentos;
-   private int numberDepartamento;
+   protected String nome;
+   protected int maximo;
+   protected Departamento[] departamentos;
+   protected int numberDepartamento;
 
    public void setNome(String nome){this.nome = nome;}
    public String getNome(){return nome;}
@@ -47,11 +47,12 @@ public class Universidade{
       return sim;
    }
     
-   public void buscar(String procurado){
+   public Departamento buscar(String procurado){
       int verif = -1;
+      Departamento achado = new Departamento(null, null, 0); 
       for (int i = 0; i < numberDepartamento; i++) {
          if (departamentos[i].getNome().equalsIgnoreCase(procurado)) {
-            departamentos[i].mostrar();
+            achado = departamentos[i];
             verif++;
          }
       }
@@ -61,6 +62,7 @@ public class Universidade{
       }else{
          System.out.println("Departamento inexistente.");
       }
+      return achado;
    }
    
     
