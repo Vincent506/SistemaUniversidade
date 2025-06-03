@@ -57,7 +57,9 @@ public class Universidade{
       }
 
       if (verif == 0) {
-         System.out.println("Funcionario");
+         System.out.println("Departamento Encontrado");
+      }else{
+         System.out.println("Departamento inexistente.");
       }
    }
    
